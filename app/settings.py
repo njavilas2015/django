@@ -25,16 +25,6 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework_simplejwt",
-    "core",
-    "accounts",
-    "employee",
-    "branch",
-    "provider",
-    "customer",
-    "email_service",
-    "pdf_service",
-    "legalentry",
-    "payment",
 ]
 
 REST_FRAMEWORK: dict[str, tuple[str]] = {
