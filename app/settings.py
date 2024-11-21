@@ -1,6 +1,7 @@
 from pathlib import Path
 from dotenv import load_dotenv
 from os import getenv
+from discover import discover_apps
 
 load_dotenv()
 
@@ -23,12 +24,18 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework_simplejwt",
+    *discover_apps(base_dir=BASE_DIR),
 ]
 
 REST_FRAMEWORK: dict[str, tuple[str]] = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ],
 }
 
 MIDDLEWARE: list[str] = [

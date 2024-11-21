@@ -9,20 +9,18 @@ install:
 superuser:
 	$(PYTHON) manage.py createsuperuser --noinput
 
-run:
+run: migrate
 	$(PYTHON) manage.py runserver
 
 migrate:
-	$(PYTHON) manage.py migrate
-
-makemigrations:
 	$(PYTHON) manage.py makemigrations
+	$(PYTHON) manage.py migrate
 
 test:
 	$(PYTHON) manage.py test
 
 lint:
-	$(VENV)/bin/pylint myapp
+	$(VENV)/bin/pylint
 
 "import-sql":
 	export PGPASSWORD=${DB_PASSWORD}
@@ -45,6 +43,18 @@ clean:
 
 shell:
 	$(PYTHON) manage.py shell
+
+push:
+	git add .
+	git commit -m "auto update"
+	git push origin main
+
+build:
+	docker build -t app:local .
+
+drop: clean
+	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+	python manage.py flush --no-input
 
 
 env:
