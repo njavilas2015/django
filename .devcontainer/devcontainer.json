@@ -1,0 +1,22 @@
+{
+	"name": "Backend Django",
+	"dockerFile": "Dockerfile",
+	"postCreateCommand": "echo 'Welcome!! Ya puedes trabajar'",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"python.defaultInterpreterPath": "/workspaces/venv/bin/python"
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.black-formatter",
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
+	},
+	"forwardPorts": [
+		8000
+	],
+	"remoteUser": "vscode"
+}
