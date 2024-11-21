@@ -8,8 +8,6 @@ BASE_DIR: Path = Path(__file__).resolve().parent.parent
 
 SECRET_KEY: str = getenv("SECRET_KEY", "django-insecure")
 
-AUTH_USER_MODEL: str = "accounts.User"
-
 DEBUG: bool = getenv("DEBUG", True)
 
 ALLOWED_HOSTS: list[str] = []
