@@ -1,7 +1,7 @@
 from pathlib import Path
 from dotenv import load_dotenv
 from os import getenv
-from discover import discover_apps
+from .discover import discover_apps
 
 load_dotenv()
 
